@@ -1,6 +1,7 @@
 CREATE DATABASE spCoffee;
 USE spCoffee;
 
+
 CREATE TABLE USUARIO(
 idCliente INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(50),
@@ -10,11 +11,13 @@ telefoneFixo char(15)
 );
 
 INSERT INTO USUARIO (nome, sobrenome, dtNasc, telefoneFixo) VALUES 
-('João', 'Silva', '1976-09-10' '55 11 3221-6745'), -- são paulo
-('Bernado', 'Lima', '1983-04-18' '55 19 5514-9720'), -- campinhas
-('Carlos', 'Nunes', '1978-11-03' '55 31 7431-9527'), -- minas
-('Roberto', 'Santos', '1980-01-07' '55 31 5515-7426'), -- minas
-('Maria', 'Cruz', '1970-12-25' '55 12 6753-8976'); -- josé dos campos
+('João', 'Silva', '1976-09-10','55 11 3221-6745'), -- são paulo
+('Bernado', 'Lima', '1983-04-18','55 19 5514-9720'), -- campinhas
+('Carlos', 'Nunes', '1978-11-03','55 31 7431-9527'), -- minas
+('Roberto', 'Santos', '1980-01-07','55 31 5515-7426'), -- minas
+('Maria', 'Cruz', '1970-12-25','55 12 6753-8976'); -- josé dos campos
+
+SELECT * FROM USUARIO;
 
 CREATE TABLE AMBIENTE (
 idAmbiente INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,6 +49,8 @@ temperatura decimal,
 umidade decimal,
 tempo datetime
 );
+
+Alter table sensor add constraint chkStatus check (status_Sensor in('ativo', 'inativo'));
 
 -- INTEGRANTES
 
