@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador financeiro(Beta)</title>
+    <link rel="stylesheet" href="stylesimulador.css">
+</head>
+
+<body>
+    <div class="container">
+        <span style="color:bisque;">
+            <H2 id="titulo">Olá, Seja bem vindo, nós somos a <i><b>COFFEE</b> Sense </i> e
+                <br>este é nosso Simulador Financeiro para te auxiliar:
+            </H2>
+
+            <br>
+
+            <i>Tamanho de sua plantação(KM ²): </i><br>
+            <br>
+            <input id="plantacao">
+
+            <br>
+            <br>
+
+            <i>Colocar a porcentagem de suas perdas (Coloque numeros inteiros):</i><br><br>
+
+            <input id="Perda">
+            <br>
+
+            <button onclick="Calcular()">Resultado</button>
+            <br>
+            <br>
+
+            <i><b>Entretanto</b>, caso não saiba a porcentagem de perda de sua plantação<br>
+                Nós podemos calcular para você<br>
+                Insira aqui o tamanho (Aproximado) de sua perda(KM ²):</i><br>
+            <br>
+            <input id="calcular">
+            <br>
+            <br>
+            (Obs: Preencha o campo acima e Ultilize o <i><b>Segundo</b></i> botão caso não saiba qual sua porcentagem de
+            perda)
+            <br>
+            <button onclick="porcentagem()">Calcular minha porcentagem</button>
+            <br>
+            <br>
+            <b>Caso queira um resultado financeiro, também temos essa opção:</b>
+            <br>
+            <i>Insira o seu lucro:
+                <br>
+            </i>
+            <br>
+            <Input id="Lucro1">
+            <br>
+            <br>
+            <i>Insira sua perda segundo a sua porcentagem obtida nos resultados anteriores:</i><br>
+            <br>
+            <input id="Perda2"><br>
+
+            <button onclick="Lucro()">Perda financeira
+            </button>
+            <br>
+
+            <div id="Respostas"></div>
+            <div id="Alerta"></div>
+        </span>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function porcentagem() {
+
+        var planta = Number(plantacao.value)
+        var semP = Number(calcular.value)
+        var t0P = Number(semP / planta)
+        var percentual = 100
+        var t0p2 = t0P * percentual
+
+        Respostas.innerHTML = `<br>Sua porcentagem de sua perda é = ${t0p2}%
+      <b>(Obs: use esse valor obtido na inserção acima)</b>`
+    }
+
+    function Calcular() {
+
+        var planta = Number(plantacao.value)
+        var perda = Number(Perda.value)
+        var percent = perda / 100
+        var result = planta * percent
+
+        alert(`Seu numero de perda é = ${result}KM em estimativa`)
+
+        if (percent > 0.30) {
+            if (percent < 0.90) {
+                Alerta.innerHTML = `<br>
+                <br>
+                <b><span style="color: yellow;">Seu percentual de perda esta muito alto, tome cuidado.</span></b>`
+            }
+        }
+
+        else {
+            Alerta.innerHTML = `<br>
+            <br>
+            <b><span style="color: green;">Seu percentual esta ótimo, porem, sempre podemos melhorar.<br>
+      FIQUE DE OLHO!!!</span></b>`
+        }
+
+        if (percent >= 0.90) {
+            Alerta.innerHTML = `<br>
+            <br>
+            <b><span style="color: red;" >Seu percentual de perda esta muito alto, infelizmente sua plantação não necessita de nossos serviços.</span></b>`
+        }
+    }
+
+    function Lucro() {
+        var perda = Number(Perda.value)
+        var percent = perda / 100
+        var lucro = Lucro1.value
+        var perda = Perda2.value / 100
+        var calculo = lucro * perda
+        var dolar = calculo / 5
+        var euro = calculo / 5.43
+        var libra = calculo / 6.36
+
+
+        Respostas.innerHTML = `<br>Com os devidos calculos e tendo em média seu lucro mensal R$${lucro}.<br>
+        Temos como estimativa seu numero perda <br>
+        R$ ${calculo}<br>
+        US$ ${dolar}<br>
+        € ${euro}<br>
+        £ ${libra}
+       <br>
+       <br>
+       Qual seu numero de brotos(plantas)?<br>
+       <br>
+       <input id="broto"><br>
+       <button onclick="Lucro2()">Ganho</button>
+        `
+    }
+
+    function Lucro2() {
+        var brot = Number(broto.value)
+        var ArUno = 40
+        var DHT11 = 10
+        var JumperUni = 0.259
+        var Jumperconjun = 10.36
+        var Jumper3x = 0.777
+        var Proto = 3.64
+        var sensor = Jumper3x + DHT11 + ArUno + Proto
+        var sensor2 = (sensor * brot) / 2
+        var lucro = Lucro1.value
+        var investimento = lucro - sensor2
+
+        var planta = Number(plantacao.value)
+        var semP = Number(calcular.value)
+        var t0P = Number(semP / planta)
+        var percentual = 100
+        var t0p2 = t0P * percentual
+        var instalação = investimento + (t0p2 * 0.21)
+        var sinstalação = lucro + (t0p2 * 0.21)
+
+        Respostas.innerHTML = `<br><b>Com o valor ${sensor} pela soma dos materiais necessários.</b><br>
+        A média na qual você ira investir em nossos sensores segundo seu numero de brotos:${brot}<br>
+        <b>Será:R$${sensor2}</b><br>
+        <br>
+        Fazendo com que seu lucro(R$${lucro}), se torne ${investimento} no mês da instalação.<br>
+        Porém, com a ajuda de nossos sensores, poderemos lhe fornecer uma diminuição da perda de 21% do valor total da perda.<br>
+        Gerando assim (mês de instalação) = R$${investimento}
+        e R$${sinstalação} nos seguintes mêses.`
+
+        Alerta.innerHTML = ``
+
+
+    }
+
+
+</script>
