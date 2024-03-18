@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #e3c79e;
+}
+
+.Cabeçalho {
+    border-bottom: 3px solid darkgreen;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+.Cabeçalho .container {
+    justify-content: flex-end;
+}
+
+.Titulo {
+    color: darkgreen;
+    font-weight: 600;
+}
+
+.Botoes {
+    color: darkgreen;
+    width: 200px;
+    display: flex;
+    align-items:first baseline;
+    justify-content: space-evenly;
+    list-style: none;
+    
+}
+
+.Imagem{
+    max-width:400px;
+    max-height:400px;
+    width: auto;
+    height: auto;
+}
+
+.Espaçamento {
+    display: flex;
+    color: darkgreen;
+    justify-content: center;
+    align-content: space-around;
+    
+}

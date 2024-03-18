@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <div class="Cabeçalho">
+
+        <div class="container">
+
+            <ul class="Botoes">
+                <li>
+                    Solução    
+                </li>
+                <li>
+                    |
+                </li>
+                <li>
+                    Calcule Perda
+                </li>
+                <li>
+                    |
+                <li>
+                    Quem Somos
+                </li>
+                <li>
+                    |
+                </li>
+                <li>
+                    Contato
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+    
+    <div class="Espaçamento">
+
+        <span class="Letras">
+
+
+
+        <img class="Imagem" src="c:\Users\SAMSUNG\OneDrive\Documentos\Desenhos\CoffeSense.png" alt="">
+
+        <h1 class="Titulo">Calculadora Financeira</h1>
+
+        Desenvolvemos Uma Calculadora Para Mostras em Dados as Suas Perdas
+
+            <p></p>
+
+        Qual Seu Nome?
+
+            <p></p>
+
+        <input id="input_Nome" type="text">
+
+            <p></p>
+
+        Qual a Média da sua Produção?
+        
+            <p></p>
+
+        <input id="Media_Produção" type="number">
+
+            <p></p>
+
+        Qual a Média de Perda?
+
+            <p></p>
+
+        <input id="Media_Perda" type="number">
+
+            <p></p>
+
+        Qual o Valor Ganho? (Por Leva)
+
+            <p></p>
+
+        <input id="Media_Ganho" type="number">
+
+            <p></p>
+
+        Qual Valor a Saca é Vendida?
+
+            <p></p>
+
+        <input id="Valor_Saca" type="number">
+
+            <p></p>
+
+        <button onclick="Calcular()">Calcular</button>
+
+        <div id="Span"></div>
+
+        </span>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    function Calcular () {
+
+    var Nome = (input_Nome.value)
+    var ProduçãoMedia = Number (Media_Produção.value)
+    var PerdaMedia = Number (Media_Perda.value)
+    var GanhoMedia = Number (Media_Ganho.value)
+    var valorSaca = Number (Valor_Saca.value)
+
+    var ProduçãoTotal = ProduçãoMedia + PerdaMedia
+    var QtdSacas = ProduçãoTotal / 60
+    var ValorTotalSacas = QtdSacas * valorSaca
+    var PerdaALongoPrazo = ValorTotalSacas * 5
+
+    Span.innerHTML = ` ${Nome}, Calculamos que: <br>
+    Com a Perda de ${PerdaMedia} por leva, você está deixando de lucrar ${ValorTotalSacas},
+     que ao longo prazo de mais 5 levas, se tornará ${PerdaALongoPrazo} <p>`
+    
+    }
+
+</script>
