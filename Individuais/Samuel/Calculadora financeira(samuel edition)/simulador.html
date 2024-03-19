@@ -80,9 +80,12 @@
         var t0P = Number(semP / planta)
         var percentual = 100
         var t0p2 = t0P * percentual
+        var temp = t0p2 * 0.30
 
         Respostas.innerHTML = `<br>Sua porcentagem de sua perda é = ${t0p2}%
-      <b>(Obs: use esse valor obtido na inserção acima)</b>`
+      <b>(Obs: use esse valor obtido na inserção acima)<br></b>
+      E com as pesquisas estatisticas da margem de perda por temperatura(30% do valor da perda):<br>
+     ${temp} é seu valor de perda por <b>TEMPERATURA</b>`
     }
 
     function Calcular() {
