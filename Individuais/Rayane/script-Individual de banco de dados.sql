@@ -1,5 +1,5 @@
-CREATE DATABASE spcoffee;
-use spcoffee;
+CREATE DATABASE coffeeSense;
+use coffeeSense;
 
 CREATE TABLE PRODUTOR (
 idProdutor INT PRIMARY KEY AUTO_INCREMENT,
@@ -73,20 +73,17 @@ idTemperatura INT PRIMARY KEY AUTO_INCREMENT,
 data_e_hora datetime,
 area_implantada_sensor varchar(50),
 status_temperatura varchar(60),
-constraint chkTemperatura check (status_temperatura in ('Temperatura adequada', 'Temperatura Inadequada', 'Alerta', 'Zona de perigo'))
+constraint chkTemperatura check (status_temperatura in ('Temperatura adequada', 'Temperatura Inadequada', 'Alerta Risco de fungos'))
 );
 
 
 Insert into Temperatura values 
-(default, '2024-01-10 08:00:45','espaço 1' ,'Temperatura adequada'),
-(default, '2024-01-10 09:30:00','espaço 2', 'Temperatura adequada'),
-(default, '2024-01-10 10:30:20','espaço 12', 'Temperatura inadequada'),
-(default, '2024-01-10 11:50:11','espaço 3', 'Temperatura inadequada'),
-(default, '2024-01-10 12:40:46', 'espaço 20','Alerta'),
-(default, '2024-01-10 13:10:55', 'espaço 14', 'Alerta'),
-(default, '2024-01-10 14:40:22','espaço 10', 'Zona de perigo'),
-(default, '2024-01-10 16:00:33','espaço 2', 'Zona de perigo'),
-(default, '2024-01-10 17:00:01', 'espaço 18','Zona de perigo');
+(default, '2024-01-10 08:00:45','setor 1' ,'Temperatura adequada'),
+(default, '2024-01-10 09:30:00','setor 2', 'Temperatura adequada'),
+(default, '2024-01-10 10:30:20','setor 4', 'Temperatura inadequada'),
+(default, '2024-01-10 11:50:11','setor 5', 'Temperatura inadequada'),
+(default, '2024-01-10 12:40:46', 'setor 6','Alerta Risco de fungos'),
+(default, '2024-01-10 13:10:55', 'setor 7', 'Alerta Risco de fungos');
 
 SELECT * FROM TEMPERATURA;
 SELECT data_e_hora as Horário,
@@ -102,7 +99,7 @@ FROM TEMPERATURA WHERE status_temperatura != 'Temperatura adequada';
 SELECT data_e_hora as Horário,
 area_implantada_sensor as Área_Sensor,
 status_temperatura as Temperatura
-FROM TEMPERATURA WHERE status_temperatura = 'Zona de perigo';
+FROM TEMPERATURA WHERE status_temperatura = 'Alerta Risco de fungos';
 
  select concat('O Sensor do ', area_implantada_sensor, ' está com a ', status_temperatura)
  as Temperatura from Temperatura;
@@ -112,26 +109,25 @@ idUmidade INT PRIMARY KEY AUTO_INCREMENT,
 data_e_hora datetime,
 area_implantada_sensor varchar(50),
 status_umidade varchar(60),
-constraint chkUmidade check (status_umidade in ('Umidade adequada', 'Umidade Inadequada', 'Alerta', 'Risco de fungos'))
+constraint chkUmidade check (status_umidade in ('Umidade adequada', 'Umidade Inadequada', 'Alerta Risco de fungos'))
 );
+
+
+ 
+ 
+Insert into Umidade values 
+(default, '2024-01-10 08:00:45','setor 1' ,'Umidade adequada'),
+(default, '2024-01-10 09:30:00','setor 2', 'Umidade adequada'),
+(default, '2024-01-10 10:30:20','setor 4', 'Umidade inadequada'),
+(default, '2024-01-10 11:50:11','setor 5', 'Umidade inadequada'),
+(default, '2024-01-10 12:40:46', 'setor 6','Alerta Risco de fungos'),
+(default, '2024-01-10 13:10:55', 'setor 7', 'Alerta Risco de fungos');
+
+SELECT * FROM Umidade;
 
  select concat('O Sensor do ', area_implantada_sensor, ' está com a ', status_umidade)
  as Umidade from Umidade;
  
- 
-Insert into Umidade values 
-(default, '2024-01-10 08:00:45','espaço 1' ,'Umidade adequada'),
-(default, '2024-01-10 09:30:00','espaço 2', 'Umidade adequada'),
-(default, '2024-01-10 10:30:20','espaço 12', 'Umidade inadequada'),
-(default, '2024-01-10 11:50:11','espaço 3', 'Umidade inadequada'),
-(default, '2024-01-10 12:40:46', 'espaço 20','Alerta'),
-(default, '2024-01-10 13:10:55', 'espaço 14', 'Alerta'),
-(default, '2024-01-10 14:40:22','espaço 10', 'Risco de fungos'),
-(default, '2024-01-10 16:00:33','espaço 2', 'Risco de fungos'),
-(default, '2024-01-10 17:00:01', 'espaço 18','Risco de fungos');
-
-SELECT * FROM Umidade;
-
 SELECT data_e_hora as Horário,
 area_implantada_sensor as Área_Sensor,
 status_umidade as Umidade
@@ -145,5 +141,7 @@ FROM Umidade WHERE status_umidade != 'Umidade adequada';
 SELECT data_e_hora as Horário,
 area_implantada_sensor as Área_Sensor,
 status_umidade as Umidade
-FROM Umidade WHERE status_umidade = 'Risco de fungos';
+FROM Umidade WHERE status_umidade = 'Alerta Risco de fungos';
+
+-- script da Rayane 
 

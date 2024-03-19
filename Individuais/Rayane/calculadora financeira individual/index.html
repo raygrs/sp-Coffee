@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simule aqui</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="banner">
+    <img class="bg" src="/calculadora financeira individual/COFFEE SENSE.jpg" alt="">
+    <div class="container">
+        <div class="formulario">
+            <h2 class="titulo">Simule aqui</h2>
+            Área da sua plantação (em metros): <input type="number" id="Area_total"><br>
+            Área afetada por condições climáticas (em metros): <input type="number" id="Area_afetada"><br>
+            Quanto você colheu no último mês: <input type="number" id="qtd_sacas"><br>
+            Quantas sacas você esperava colher no último mês: <input type="number" id="qtd_esperada"><br>
+            Colheita anual: <input type="number" id="colheitaAnual"><br>
+            Peso em quilogramas da saca: <input type="number" id="kg_saca"><br>
+            Valor da saca de café vendida <input type="number" id="Valor_saca"><br>
+
+            <div class="botaos">
+                <button class="botao" onclick="verPerdas()">Analisar perda</button>
+                <button class="botao" onclick="AnalisarRendimento()">Rendimento</button>
+            </div>
+
+            <div id="exibir"></div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+<script>
+    
+    prompt(`Olá produtor, vamos simular suas perdas e rendimentos ? sem compromisso, apenas faça uma ánalise do quanto podemos  ajudar no seu negócio`);
+
+    function verPerdas() {
+
+        var area = Number(Area_total.value);
+        var area_afetada = Number(Area_afetada.value);
+        var porcentagem_areaAfetada = (area_afetada * 100) / area;
+
+        var colheita = Number(qtd_sacas.value);
+        var colheita_esperada = Number(qtd_esperada.value);
+        var valor_saca = Number(Valor_saca.value);
+        var colheita_anual = Number(colheitaAnual.value);
+
+        var rendimentoColheita = colheita * valor_saca;
+        var rendimentoEsperado = colheita_esperada * valor_saca;
+
+        var perdaRendimento = (rendimentoEsperado - rendimentoColheita) * 100 / rendimentoColheita;
+        var rendimento_anual_esperado = rendimentoEsperado * colheita_anual
+        var rendimento_anual = rendimentoColheita * colheita_anual
+        var perda_anual = (rendimento_anual_esperado - rendimento_anual);
+
+        if(colheita_esperada >= colheita){
+            exibir.innerHTML = `Olá produtor, com base nos dados obtidos seu terreno tem ${area} M² sendo que ${porcentagem_areaAfetada}% dela está prejudicada em derivado ao mal monitoramento da temperatura e umidade, isso está prejudicando seu rendimento em ${perdaRendimento.toFixed(2)}%, era para você ter um retorno de ${rendimentoEsperado} e obteve de ${rendimentoColheita} medidas precisam ser tomadas urgente antes que o caso se agrave perdendo até ${perda_anual}R$ por ano `
+        }
+
+        if(colheita_esperada < colheita){
+
+            var kg = Number (kg_saca.value);
+            
+            var valor_por_kg = kg / valor_saca;
+            var valor_por_kg_recomendado = 60 / 1000;
+            var embrapa_valor_por_kg = 60 / 1000;
+
+            // cotação (a cotação do café se refere ao preço médio da commodity do café em uma determinada bolsa de valores) pesquisar mais sobre
+
+            exibir.innerHTML = `Olá produtor, com base nos dados obtidos a colheita esperada atingiu a produção atual, sendo que cada kg está sendo avaliado em R$${valor_por_kg} mas de acordo com a pesquisa do site "Melhor câmbio.com" seu rendimento pode aumentar, recomenda-se que cada saca de café de aproximadamente 60kg seja vendido em torno de 1000.00, isso daria R$${embrapa_valor_por_kg} por kg melhorando a produtividade e lucros finais `
+        }
+
+    }
+
+    function AnalisarRendimento(){
+        var colheita = Number(qtd_sacas.value);
+        var colheita_esperada = Number(qtd_esperada.value);
+        var valor_saca = Number(Valor_saca.value);
+        var colheita_anual = Number(colheitaAnual.value);
+
+        var rendimentoColheita = colheita * valor_saca;
+        var rendimentoEsperado = colheita_esperada * valor_saca;
+
+        exibir.innerHTML = `Com o monitoramento correto, reduziremos suas perdas, podendo assim tomar medidas quando lhe for notificado caso haja alguma alteração no seu terreno, garantimos seu lucro em até ${rendimentoEsperado.toFixed(2)}, logo o valor que estava sendo perdido se torna seu lucro tendo um rendimento anual total de R$ ${rendimentoEsperado * colheita_anual}, por quê perder se você pode tornar sua fonte de renda ainda melhor, invista conosco e garanta qualidade e lucro em suas plantações  `
+    }
+</script>
