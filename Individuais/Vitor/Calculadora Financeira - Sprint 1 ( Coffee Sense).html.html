@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira - Café </title>
+    <link rel="stylesheet" href="Calculadora_Financeira.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h2>Calculadora Financeira - <i>Coffee Sense</i></h2>
+        <h3>Perdas</h3>
+        Área Tolta da Plantação (ha): <input type="number" id="input_areaPlantacao"><br><br>
+        Número Anual de Sacas Colhidas: <input type="number" id="input_colheitaTotalSaca"><br><br>
+        Estimativa do Número Total de Plantas de Café: <input type="number" id="input_numeroPlanta"><br><br>
+
+        Perda Anual Total de Plantas de Café (%): <input type="number" id="input_percentualPerda"><br><br>
+        Preço da Saca de Café (R$): <input type="number" id="input_precoSaca"><br><br>
+        <button onclick="CalcularValorPerda()">Calcular Perdas</button><br>
+        <div class="info">
+        <p class="info_texto">
+            Para efeito dos cálculos, considera-se que:<br><br>
+            Uma saca de café contém 60,00 kg.<br>
+            Uma planta gera por ano 1,00 kg de café.
+        </p>
+        </div><br><br>
+        <div id="div_resultado1">
+        Perda Anual de Sacas de Café: <span id="span_perdaSacaAnual"></span><br></div>
+        <div id="div_resultado2">
+        Perda Monetária Anual - Sacas Não Produzidas: <span id="span_impactoFinanceiro"></span>
+        </div>
+        <br>
+        <h3>Aumento - Produtividade & Qualidade</h3>
+       
+        Informe o custo anual estimado para gestão de temperatura/umidade da plantação (R$):
+        <br><br><input type="number" id="input_custoGestao">
+        <button onclick="CalcularAumentoProdutividade()">Calcular Aumentos Potenciais</button><br><br>
+        <p>Produtividade Natural da Plantação: <span id="span_produtividadeNatural"></span></p>
+        <p>Aumento Potencial de Produtividade Anual: <span id="span_resultadoProdutividade"></span>
+        <p>Aumento Potencial de Qualidade do Produto: <span id="span_resultadoQualidade"></span></p>
+    
+</body>
+</html>
+
+<script>
+    function CalcularValorPerda(){
+        var areaPlantacao = Number(input_areaPlantacao.value)
+        var colheitaTotalSaca = Number(input_colheitaTotalSaca.value)
+        var percentualPerdaPlanta = Number(input_percentualPerda.value)
+        var numeroPlanta = Number(input_numeroPlanta.value)
+        var precoSaca = Number(input_precoSaca.value)
+
+        var perdaAnualSaca = 100*percentualPerdaPlanta*colheitaTotalSaca/numeroPlanta
+
+        var perdaAnualSacaValor = perdaAnualSaca*precoSaca
+
+        span_perdaSacaAnual.innerHTML = `<b><span style="color: red"> ${perdaAnualSaca.toFixed(0)} Sacas</b>`
+        span_impactoFinanceiro.innerHTML = 
+        `<b><span style="color: red">R$${perdaAnualSacaValor.toFixed(2)}</b>`
+    }
+
+    function CalcularAumentoProdutividade(){
+        var custoGestao = Number(input_custoGestao.value) 
+        var areaPlantacao = Number(input_areaPlantacao.value)
+        var colheitaTotalSaca = Number(input_colheitaTotalSaca.value)
+        var percentualPerdaPlanta = Number(input_percentualPerda.value)
+        var numeroPlanta = Number(input_numeroPlanta.value)
+
+        var perdaAnualSaca = 100*percentualPerdaPlanta*colheitaTotalSaca/numeroPlanta
+
+        var produtividadeNatural = colheitaTotalSaca/areaPlantacao
+        var aumentoProdutividadePotencial = (colheitaTotalSaca + perdaAnualSaca )/areaPlantacao
+
+        var aumentoQualidade = (custoGestao * 0.3) / perdaAnualSaca
+        
+        span_produtividadeNatural.innerHTML = 
+        `<b><span style="color: green"> ${produtividadeNatural.toFixed(2)} sacas/ha</b>`
+
+        span_resultadoProdutividade.innerHTML = 
+        `<b><span style="color: green"> ${aumentoProdutividadePotencial.toFixed(2)} sacas/ha</b>`
+        
+        span_resultadoQualidade.innerHTML = 
+        `<b><span style="color: green"> ${aumentoQualidade.toFixed(2)} %</b>`
+    }
+
+</script>
+

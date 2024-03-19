@@ -1,0 +1,68 @@
+body, html {
+  
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E1D5C4; 
+    background-size: cover;
+    background-position: center;
+    overflow: auto;
+  }
+
+.div_resultado1 {
+  display: inline-block;
+}
+
+.div_resultado2 {
+    display: inline-block;
+}
+
+.logo {
+  position: absolute;
+  top: -70px;
+  left: 10px;
+  width: 250px; 
+  height: 250px; 
+  background-image: url(file:///C:/Users/VICTOR/Downloads/Logo%20-%20Coffee%20Sense.png);
+  background-size: contain; 
+  background-repeat: no-repeat; 
+}
+
+.container {
+  width: 700px;
+  height: 700px; 
+  margin: 0;
+  
+
+  background-image: 
+  url(file:///C:/Users/VICTOR/Downloads/cafe_fundo.png);
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: block;
+ 
+  padding: 20px;
+  box-sizing: border-box; 
+  text-align: center; 
+  border: 1px solid #000;
+}
+
+.info {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.info_texto {
+  background-color: #ffffffa2;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box; 
+  margin: -0.1px; 
+}
