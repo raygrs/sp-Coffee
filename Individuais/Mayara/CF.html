@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="CF.css">
+</head>
+<style>
+
+
+</style>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">COFFEE SENSE</h1>
+        </div>
+    </div>
+
+    <div class="bloco">
+
+        <div class="conteudo_bloco">
+
+            <div class="conteudo">
+                <p>Bem Vindos agricultores de café, nós somos o Coffe Sense!</p>
+                <p><b>Simule aqui quanto teve de perdas de forma simples e sem compromisso</b></p>
+                <p>É preciso apenas inserir algumas informações:</p><br>
+
+
+
+                Quantidade de sacas colhidas por hectares?<br>
+                <input id="qtd_saca_colheita"><br>
+
+                Quantidade de sacas perdidas?<br>
+                <input id="qtd_saca_perdida"><br>
+
+                Quanto você fatura com as sacas colhidas?<br>
+                <input id="faturamento_real"><br>
+
+                Quanto você esperava faturar?<br>
+                <input id="faturamento_esperado"><br>
+
+                Por quanto você vende sua saca?<br>
+                <input id="valor_saca_produtor"><br>
+
+                <button onclick="rendimento()">Analisar Rendimento (%)</button>
+                <button onclick="perda()">Analisar perda (%)</button><br>
+                <div id="div_exibir"></div>
+            </div>
+        </div>
+
+        <!-- // incluir perdar de umidade e temperatura para o cliente caso ele não saiba -->
+    </div>
+  
+
+</body>
+
+</html>
+
+<script>
+    function rendimento() {
+        var QtdColhida = Number(qtd_saca_colheita.value)
+        var QtdPerdida = Number(qtd_saca_perdida.value)
+        var Faturamento_Real = Number(faturamento_real.value)
+        var Faturamento_Esperado = Number(faturamento_esperado.value)
+
+        var RendimentoSaca = ((QtdColhida - QtdPerdida) / QtdColhida) * 100
+        var RendimentoBruto = (Faturamento_Esperado - Faturamento_Real) * 100 / Faturamento_Real
+
+        div_exibir.innerHTML += `Olá produtor, de acordo com a sua quantidade de sacas colhidas e perdidas, o seu rendimento de sacas foi de ${RendimentoSaca.toFixed(2)}%. 
+        Já o seu rendimento bruto foi de ${RendimentoBruto.toFixed(2)}%.<br>`
+
+    }
+
+    function perda() {
+
+        var PrecoSaca = Number(valor_saca_produtor.value)
+        var QtdPerdida = Number(qtd_saca_perdida.value)
+        var Perda = (QtdPerdida * PrecoSaca)
+
+        div_exibir.innerHTML += `Olá produtor, de acordo com a quantidade de sacas perdidas e o valor de venda da sua saca, sua perda é de R$${Perda.toFixed(2)}.<br><button onclick="beneficio_do_projeto()">Saiba quanto você irá se beneficiar com o nosso projeto</button> `
+
+    }
+
+    function beneficio_do_projeto() {
+
+        var Faturamento_Real = Number(faturamento_real.value)
+        var Faturamento_Esperado = Number(faturamento_esperado.value)
+        var PrecoSaca = Number(valor_saca_produtor.value)
+        var QtdPerdida = Number(qtd_saca_perdida.value)
+
+        var RendimentoBruto = (Faturamento_Esperado - Faturamento_Real) * 100 / Faturamento_Real
+        var Perda = (QtdPerdida * PrecoSaca)
+
+        var RendmentoProjeto = (RendimentoBruto + 0.21)
+        var PerdaProjeto = (Perda - 0.021)
+
+        div_exibir.innerHTML = ` Com o nosso projeto há uma estimativa do seu rendimento aumentar para ${RendmentoProjeto.toFixed(2)}% e sua perda diminuirá para ${PerdaProjeto}%`
+    }
+
+</script>
