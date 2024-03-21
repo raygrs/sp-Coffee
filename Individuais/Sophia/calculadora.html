@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="style2.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COFFEE SENSE</title>
-    <h1 style="color: #493A1B; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Calcule o tamanho do seu problema! </h1>
-    <h2 style="color:#493A1B; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Veja o quanto você é afetado com a falta de controle de temperatura da sua platação de café</h2>
-   
+
+
 </head>
 
-<body style="background-color: #E1D5C4;">
-    <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #493A1B;">Insira a área da sua plantação (em hectáres):</span>
-    <br>
-    <input id="input_area">
-    <br>
-    <br>
-    <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #493A1B;">Insira o preço da médio da saca de café:</span>
-    <br>
-    <input id="input_preco_medio_saca">
-    <br>
-    <br>
-    <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #493A1B;"></span>
-    <br>
-    <button onclick="calcularPerda()">Calcular Perda</button>
-    <br>
-    <br>
-    <span id="div_mensagem"></span>
-    
+<body>
+    <div class="header">
+
+        <div class="container">
+            <img class="imagem" src="c:\Users\sophy\OneDrive\Imagens\logo projeto.png">
+
+        </div>
+
+    </div>
+
+    <div class="bloco">
+        <div class="conteudo_bloco">
+            <div class="conteudo">
+                <h1 class="linha">Calcule sua perda!</h1>
+                <h2 class="linha">
+                    Veja o quanto você é afetado com a falta de controle de temperatura da sua platação de café</h2>
+
+                <span class="linha">Insira a área da sua plantação (em
+                    hectáres):</span>
+                <br>
+                <input id="input_area">
+                <br>
+                <br>
+                <span class="linha">Insira o preço da médio da saca de café:</span>
+                <br>
+                <input id="input_preco_medio_saca">
+                <br>
+                <br>
+                <span class="linha"></span>
+                <br>
+                <button onclick="calcularPerda()">Calcular Perda</button>
+                <br>
+                <br>
+                <span id="div_mensagem"></span>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
 
 <script>
     function calcularPerda() {
-    var areaPlantacao = Number(input_area.value)
-    var areaPlantacaoMetros = areaPlantacao * 10000
-    var precoMedio = Number(input_preco_medio_saca.value)
-    var lucroEsperado = areaPlantacaoMetros * precoMedio
-    var perda = lucroEsperado * 0.2
+        var areaPlantacao = Number(input_area.value)
+        var areaPlantacaoMetros = areaPlantacao * 10000
+        var precoMedio = Number(input_preco_medio_saca.value)
+        var lucroEsperado = areaPlantacaoMetros * precoMedio
+        var perda = lucroEsperado * 0.2
+        var perdaAnual = perda * 12
 
-    div_mensagem.innerHTML = `Olá produtor! Com a área de ${areaPlantacao} hectáres e preço médio de R$${precoMedio} por saca, seu lucro esperado era de R$${lucroEsperado}. <br>
+        div_mensagem.innerHTML = `Olá produtor! Com a área de ${areaPlantacao} hectáres e preço médio de R$${precoMedio} por saca, seu lucro esperado era de R$${lucroEsperado.toFixed(2)}. <br>
      Porém, 20% desse valor foi comprometido pela falta de monitoramento da temperatura e umidade da sua plantação, sua perda foi de R$${perda}.`
 
     }

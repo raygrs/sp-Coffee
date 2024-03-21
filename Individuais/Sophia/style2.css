@@ -1,0 +1,55 @@
+
+body {
+    background-color: #E1D5C4
+}
+
+
+.header {
+    border-bottom: 3px solid #493A1B;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.imagem {
+    max-width: 400px;
+    max-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+}
+
+.linha {
+    color:#493A1B; 
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header .container {
+    justify-content: space-between;
+}
+
+.bloco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.conteudo_bloco {
+    border: 2px solid #493A1B;
+    margin-top: 20px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: 800px;
+    padding: 20px;
+
+}
