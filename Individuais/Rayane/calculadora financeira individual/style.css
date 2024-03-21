@@ -8,6 +8,8 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
+    
 }
 
 .banner {
@@ -17,6 +19,7 @@ body{
     padding: 0 100px;
     justify-content: flex-start;
     align-items: center;
+    /* background-image: url(/COFFEE\ SENSE.jpg); */
   
 }
 
@@ -30,7 +33,7 @@ body{
 }
 
 .container{
-    width: 700px;
+    width: 800px;
     height: 70vh;
     background-color:#cdb89bc1;
     display: flex;
@@ -39,12 +42,12 @@ body{
     border-radius: 20px;
     z-index: 100;
     margin-left: 18rem;
-    font-size: 18px;
+    font-size: 19px;
 
 }
 .titulo{
     margin-top: -2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +59,7 @@ input{
     height: 18px;
     border-radius: 3px solid transparent;
     margin-bottom: 5px;
+
 }
 #exibir{
     width: 500px;
