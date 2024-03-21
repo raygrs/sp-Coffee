@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="CalculadoraFinanceira.css">
+
+    <style>
+        
+        .imagem-tela-cheia {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">
+                COFFEE SENSE
+            </h1>
+            <ul class="Calculadora">
+                <li>
+                    Matheus
+                </li>
+                <li>
+                    |
+                </li>
+                <li>
+                    01241171
+                </li>
+                <li>
+                    |
+                </li>
+                <li>
+                    Login
+                </li>
+                <li>
+                    |
+                </li>
+                <li>
+                    Cadastro
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="Bloco"> 
+        <h1 class="Paragrafo"> Calcular suas perdas </h1><br>
+        Nome:
+        <input type="text" id="nome_produtor"><br>
+        Custo de produção da saca por hectar:
+        <input class="botao" id="custo_hectar"><br>
+        Custo de venda da saca do café:
+        <input class="botao" id="custo_saca"><br>
+        Quantidade de safra produzida por ano
+        <input class="botao" type="Number" id="qtd_safra_ano"><br><br>
+        <!-- Perdas da colheita:
+        <input class="botao" id="perdas_colheita "><br> -->
+        <h3 class="Paragrafo2"> Taxa de câmbio para moedas estrangeiras </h3>
+        Qual a moeda estrangeira?
+        <input class="botao" type="text" id="moeda_estrangeira"><br>
+        Impostos da Exportação:
+        <input class="botao" id="impostos_exportacao"><br><br><br>
+        <button class="Calcular" onclick="Calcular()"> Sua perda </button>
+        <span id="resultado"></span>
+
+        <!-- <button class="Calcular" onclick="Calcular() "> s</button> -->
+    </div>
+</body>
+
+</html>
+
+<script>
+    function Calcular(){
+        let Nome = (nome_produtor.value)
+        let CustoProducao = Number(custo_hectar.value)
+        let Custo_saca = Number(custo_saca.value)
+        let Qtd_saca_ano= Number(qtd_safra_ano.value)
+       
+        let Perdas = CustoProducao - Custo_saca
+
+        let Deixar_de_Ganhar = Qtd_saca_ano - Perdas
+    
+
+        resultado.innerHTML =`Olá ${Nome}, seus dados foram análisados e 
+        gostariamos de lhe informar que as suas perdas são de $${Perdas}. 
+        Além disso, você deixa de ganhar $${Deixar_de_Ganhar}. 
+        Aos nossos cuidados, sua plantação será bem cuidada, em breve você verá melhoras.`
+    }
+</script>

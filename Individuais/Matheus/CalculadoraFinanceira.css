@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(245, 222, 179); 
+
+   
+}
+
+.header {
+    border-bottom: 2px solid #000000;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo {
+    color: #5E2612;
+    font-weight: 600;
+}
+
+.Calculadora {
+    color: #5E2612;
+    width:300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.Paragrafo {
+    margin:10px;
+    color: #5E2612;
+
+}
+
+.botao {
+    width: 100px;
+    height: 20px;
+    padding: 0;
+    margin: auto;
+}
+
+.Paragrafo2 {
+    color: #5E2612;
+}
+
+.Bloco {
+    margin-left: 450px;
+    background-color: rgb(245, 222, 179); 
+    width:600px; 
+    height:425px;
+    border: 2px solid  #000000;
+    justify-content: center;
+
+}
+
+.Calcular {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:background-color 0.3s ease ;
+    
+}
+
+.Calcular:hoover {
+    background-color: #5E2612;
+}
